@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>Cadastro de clientes</title>
+    </head>
+<body>
+	<div id="cadastro">
+    	<form name="signup" method="post" action="cadastro.php">
+    		<table id="tab_cadastro">
+            	<tr>
+                	<td>Nome:</td>
+                    <td><input type="text" name="nome" required placeholder="Nome do cliente" id="nome" class="txt" /></td>
+                </tr>
+                <tr>    
+                    <td>E-mail:</td>
+                    <td><input type="text" name="email" required placeholder="E-mail do cliente" id="email" class="txt" /></td>
+                </tr>
+                <tr>    
+                    <td>Data de nascimento:</td>
+                    <td><input type="date" name="data" required placeholder="data de nascimento" id="data" class="txt" /></td>
+                </tr>
+               
+                    <td colspan="2"><input type="submit" value="Cadastrar" name="go" id="botao_cad"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
