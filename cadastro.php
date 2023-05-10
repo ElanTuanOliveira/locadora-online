@@ -1,6 +1,13 @@
-
 <?php
 
+if ($_POST != null){
+
+	$cliente[''] = $_POST;
+	
+	print_r($cliente);
+	gravar($cliente);
+	
+	}
 
 //Criamos uma função que recebe um texto como parâmetro.
 function gravar($cliente){
@@ -17,12 +24,6 @@ function gravar($cliente){
 	fclose($fp);
 }
 
-if ($_POST != null){
 
-$cliente[] = $_POST;
-print_r($cliente);
-gravar($cliente);
-
-}
 ?>
 
