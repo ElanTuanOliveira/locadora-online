@@ -1,6 +1,12 @@
 <?php
 
+function gravarnome($nomeCliente){
 
+	$arquivo ="nomeClientes.txt";
+	$fp = fopen($arquivo, "a+");
+	fwrite($fp, $nomeCliente . PHP_EOL );
+	fclose($fp);
+}
 	//Criamos uma função que recebe um texto como parâmetro.
 function gravar($armazenarDadosCliente){
 	//Variável arquivo armazena o nome e extensão do arquivo.
@@ -19,7 +25,7 @@ function gravar($armazenarDadosCliente){
 
 if (!empty($_POST) )
 {
-	 
+	gravarnome($_POST['nome']); 
 	gravar($_POST);
 	echo "Cadastro foi realizado com sucesso";
 }else{
