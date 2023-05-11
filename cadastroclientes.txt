@@ -1,0 +1,12 @@
+ArrayArray
+(
+    [nome] => elan tuan pereira de oliveira
+    [email] => elan_tuan@hotmail.com
+    [data] => 2023-05-16
+)
+$_POSTArray
+(
+    [nome] => elan tuan pe
+    [email] => tuan.elan@gmail.com
+    [data] => 2023-05-24
+)
