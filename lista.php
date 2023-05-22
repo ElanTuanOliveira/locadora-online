@@ -6,7 +6,7 @@ function ler(){
 
 //Variável arquivo armazena o nome e extensão do arquivo.
 
-$arquivo = "cadastroclientes.txt";
+$arquivo = "nomeClientes.txt";
 
 //Variável $fp armazena a conexão com o arquivo e o tipo de ação.
 
@@ -14,7 +14,7 @@ $fp = fopen($arquivo, "r");
 
 //Lê o conteúdo do arquivo aberto.
 
-$conteudo[] = fread($fp, filesize($arquivo));
+$conteudo = fread($fp, filesize($arquivo));
 
 //Fecha o arquivo.
 
