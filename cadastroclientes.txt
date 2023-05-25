@@ -46,3 +46,9 @@ Array
     [email] => ahahuahua@kkkkkk.com.br
     [data] => 2023-05-22
 )
+Array
+(
+    [nome] => Antonio Neto
+    [email] => antonio@neto.com.br
+    [data] => 2023-05-01
+)

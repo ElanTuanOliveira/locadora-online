@@ -19,7 +19,11 @@
     <div class="container">
         <h2>Cadastrar o cliente</h2>
         <br> 
-        <br>   
+        <br>  
+        <?php require ('components/menu.php');?>
+        <br>
+        <br>
+        <br>
         <div id="cadastro" class="row" >
             <form  name="signup" method="post" action="cadastro.php">
                 <div class="mb-3">
@@ -60,7 +64,7 @@
                 </div>
 
                 <input class="btn btn-primary" type="submit" value="Cadastrar" >
-                <button type="button" class="btn btn-secondary" href="index.html">Voltar</button>
+                <a href="index.php"><button type="button" class="btn btn-secondary" >Voltar</button></a>
             </form>
         </div>
     </div>

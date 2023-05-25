@@ -32,7 +32,7 @@ if (!empty($_POST) )
 	echo "Preencha os dados do cliente";
 }
 	
-print_r($_POST);
+echo "Cadastro realizado com sucesso";
 
 ?>
 
