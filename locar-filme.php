@@ -7,7 +7,7 @@ require ('conexao.php');
 ?><!doctype html>
 <head>
     <meta charset="utf-8">
-	<title>Cadastro de clientes</title>
+	<title>Alugar filmes</title>
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles.css" />
@@ -32,38 +32,49 @@ require ('conexao.php');
         <div id="cadastro" class="row" >
             <form  name="signup" method="post" action="cadastro.php">
                 <div class="mb-3">
-                    <label for="nome" class="form-label">Nome</label>
+                    <label for="nome" class="form-label">Cliente</label>
                     <input 
                         type="text" 
                         class="form-control" 
                         aria-describedby="nomeHelp" 
-                        name="nome" 
+                        name="cliente" 
                         required 
                         placeholder="Nome do cliente" 
-                        id="nome"                        
+                        id="cliente"                        
                     />
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">E-mail:</label>
+                    <div class="mb-3">
+                    <label for="nome" class="form-label">Filme</label>
                     <input 
-                        type="email" 
-                        class="form-control"
-                        aria-describedby="emailHelp" 
-                        name="email" 
+                        type="text" 
+                        class="form-control" 
+                        aria-describedby="nomeHelp" 
+                        name="filme" 
                         required 
-                        placeholder="E-mail do cliente" 
-                        id="email"                        
-                    />
+                        placeholder="Nome do filme" 
+                        id="filme"                        
+                    />    
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Data de nascimento:</label>
+                    <label for="email" class="form-label">Data de locação:</label>
                     <input 
                         type="date" 
                         class="form-control" 
                         aria-describedby="dataHelp" 
-                        name="data" 
+                        name="datalocacao" 
                         required 
-                        placeholder="data de nascimento" 
+                        placeholder="data de locação" 
+                        id="datalocacao"  
+                    />
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Data de devolucação:</label>
+                    <input 
+                        type="date" 
+                        class="form-control" 
+                        aria-describedby="dataHelp" 
+                        name="datadevolucao" 
+                        required 
+                        placeholder="data de devolução" 
                         id="data"  
                     />
                 </div>

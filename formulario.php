@@ -3,6 +3,27 @@
 
 require ('conexao.php');
 
+$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+
+$cliente = [
+    'nome' => '',
+    'email' => '',
+    'data_nascimento' => ''
+
+];
+
+if($id !== false){
+
+    
+    $sql = "SELECT * FROM cliente WHERE id = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt = $mysqli->execute_query($sql, [$id]);
+    $cliente = $stmt->fetch_array(MYSQLI_ASSOC);
+}
+
+
+
+
 
 ?><!doctype html>
 <head>
@@ -30,7 +51,7 @@ require ('conexao.php');
         <br>
         <br>
         <div id="cadastro" class="row" >
-            <form  name="signup" method="post" action="cadastro.php">
+            <form  name="signup" method="post" action="<?= $id === false ? 'http://localhost/locadora-online/cadastar-cliente.php' : 'http://localhost/locadora-online/editar.php?id=' . $id; ?>"
                 <div class="mb-3">
                     <label for="nome" class="form-label">Nome</label>
                     <input 
@@ -38,6 +59,7 @@ require ('conexao.php');
                         class="form-control" 
                         aria-describedby="nomeHelp" 
                         name="nome" 
+                        value="<?= $cliente['nome']; ?>"
                         required 
                         placeholder="Nome do cliente" 
                         id="nome"                        
@@ -50,6 +72,7 @@ require ('conexao.php');
                         class="form-control"
                         aria-describedby="emailHelp" 
                         name="email" 
+                        value="<?= $cliente['email']; ?>"
                         required 
                         placeholder="E-mail do cliente" 
                         id="email"                        
@@ -62,6 +85,7 @@ require ('conexao.php');
                         class="form-control" 
                         aria-describedby="dataHelp" 
                         name="data" 
+                        value="<?= $cliente['data_nascimento']; ?>"
                         required 
                         placeholder="data de nascimento" 
                         id="data"  

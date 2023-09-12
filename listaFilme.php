@@ -2,7 +2,7 @@
 
 require('conexao.php');
 
-$clienteLista = $mysqli->execute_query('SELECT * FROM cliente')->fetch_all(MYSQLI_ASSOC)
+$filmeLista = $mysqli->execute_query('SELECT * FROM filme')->fetch_all(MYSQLI_ASSOC)
 
 
 

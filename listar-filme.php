@@ -1,13 +1,13 @@
 <?php
 require ('conexao.php');
-require('lista.php');
+require('listaFilme.php');
 
 
 
 ?><!doctype html>
 <head>
     <meta charset="utf-8">
-	<title>Lista de clientes</title>
+	<title>Lista de filmes</title>
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles.css" />
@@ -25,7 +25,7 @@ require('lista.php');
     
   <div class="container">
     <h2 style=" text-align: center;">
-    Nome dos clientes  
+    Filmes  
     </h2>
     <br>
     <br> 
@@ -38,23 +38,23 @@ require('lista.php');
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Nome</th>
-      <th scope="col">E-mail</th>
-      <th scope="col">Data de Nascimento</th>
+      <th scope="col">Filme</th>
+      <th scope="col">Tipo do filme</th>
+      <th scope="col">Data de lançamento</th>
       <th scope="col">Ação</th>
     </tr>
   </thead>
   <tbody>
  
-  <?php foreach ($clienteLista as $cliente): ?>
+  <?php foreach ($filmeLista as $filme): ?>
     <tr>
-      <th scope="row"><?= $cliente['id']; ?></th>
-      <td><?= $cliente['nome']; ?>  </td>
-      <td><?= $cliente['email']; ?> </td>
-      <td><?= $cliente['data_nascimento']; ?></td>
+      <th scope="row"><?= $filme['id']; ?></th>
+      <td><?= $filme['nome_filme']; ?>  </td>
+      <td><?= $filme['tipo_filme']; ?> </td>
+      <td><?= $filme['data_filme']; ?></td>
       <td>
-      <a href="http://localhost/locadora-online/formulario.php?id=<?= $cliente['id']; ?>">Editar</a>
-      <a href="http://localhost/locadora-online/remover.php?id=<?= $cliente['id']; ?>">Excluir</a>
+      <a href="http://localhost/locadora-online/formulario-filme.php?id=<?= $filme['id']; ?>">Editar</a>
+      <a href="http://localhost/locadora-online/removerFilme.php?id=<?= $filme['id']; ?>">Excluir</a>
       </td>
     </tr>
 
