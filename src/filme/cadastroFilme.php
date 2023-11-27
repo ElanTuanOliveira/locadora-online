@@ -1,24 +1,22 @@
 <?php
 
-require('conexao.php');
+require('Filme.php');
 
 if (!empty($_POST) )
 {
-	$filme = $_POST['filme'];
-	$tipofilme = $_POST['tipo'];
-	$datafilme = $_POST['data'];
-	$sql = 'INSERT INTO filme (nome_filme, tipo_filme, data_filme) VALUES (?, ?, ?)';
 	
-	$saveUser=$mysqli->execute_query($sql, [$filme, $tipofilme, $datafilme]);
-	if($saveUser){
-		header('Location: http://localhost/locadora-online/listar-filme.php?sucesso=1');
+	$cadastroFilmeClasse = new Filme;
+	$resultado_cadastro = $cadastroFilmeClasse->cadastrarFilme($_POST);
+	
+	if($resultado_cadastro){
+		header('Location: http://localhost/locadora-online/src/listar-filme.php?sucesso=1');
 	}else{
-		header('Location: http://localhost/locadora-online/cadastro.php?sucesso=0');
+		header('Location: http://localhost/locadora-online/src/cadastro.php?sucesso=0');
 	}
 
 	
 }else{
-	echo "Preencha os dados do cliente";
+	echo "Preencha os dados do Filme";
 }
 	
 

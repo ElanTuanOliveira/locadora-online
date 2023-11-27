@@ -1,6 +1,6 @@
 <?php
 
-require('conexao.php');
+require('Cliente.php');
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 if($id === false){
@@ -25,13 +25,19 @@ if ($data === false) {
     exit();
 } 
 
-$sql = "UPDATE cliente SET nome = '$nome', email = '$email', data_nascimento = '$data' WHERE id = $id;";
-$stmt = $mysqli->prepare($sql);
-$stmt = $mysqli->execute_query($sql);
+if (!empty($_POST))
 
+{
+    $alterarClienteClasse = new Cliente;
+	$resultado_update = $alterarClienteClasse->alterarCliente($_POST, $id); 
+    
+    if($resultado_update === true) {
+        header('Location: http://localhost/locadora-online/src/cliente/lista-cliente.php?sucesso=1');
+    }else{
+        header('Location: http://localhost/locadora-online/src/cliente/formulario.php?sucesso=0');
+    }
 
-if($stmt){
-    header('Location: http://localhost/locadora-online/lista-cliente.php?sucesso=1');
 }else{
-    header('Location: http://localhost/locadora-online/formulario.php?sucesso=0');
-}
+    echo "Preencha os dados do cliente";
+}    
+

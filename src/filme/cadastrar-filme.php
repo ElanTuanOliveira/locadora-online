@@ -1,7 +1,7 @@
 
 <?php
 
-require ('conexao.php');
+require ('cadastroFilme.php');
 
 
 ?><!doctype html>
@@ -10,7 +10,7 @@ require ('conexao.php');
 	<title>Cadastro de Filmes</title>
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="../../assets/css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -25,7 +25,7 @@ require ('conexao.php');
         <h2>Cadastrar o Filme</h2>
         <br> 
         <br>  
-        <?php require ('components/menu.php');?>
+        <?php require ('../../components/menu.php');?>
         <br>
         <br>
         <br>

@@ -1,24 +1,23 @@
 
 <?php
 
-require ('conexao.php');
+
+require ('Filme.php');
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
-$cliente = [
-    'nome' => '',
-    'email' => '',
-    'data_nascimento' => ''
+$filme = [
+    'nome_filme' => '',
+    'tipo_filme' => '',
+    'data_filme' => ''
 
 ];
 
 if($id !== false){
 
+    $alterarFilmeFormularioClasse = new Filme;
+    $filme = $alterarFilmeFormularioClasse->listarAlteracaoFilme($id);
     
-    $sql = "SELECT * FROM cliente WHERE id = ?";
-    $stmt = $mysqli->prepare($sql);
-    $stmt = $mysqli->execute_query($sql, [$id]);
-    $cliente = $stmt->fetch_array(MYSQLI_ASSOC);
 }
 
 
@@ -28,10 +27,10 @@ if($id !== false){
 ?><!doctype html>
 <head>
     <meta charset="utf-8">
-	<title>Cadastro de clientes</title>
+	<title>Editar Filme</title>
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="../../styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -43,56 +42,56 @@ if($id !== false){
 </head>
 <body>
     <div class="container">
-        <h2>Cadastrar o cliente</h2>
+        <h2>Editar Filme</h2>
         <br> 
         <br>  
-        <?php require ('components/menu.php');?>
+        <?php require ('../../components/menu.php');?>
         <br>
         <br>
         <br>
         <div id="cadastro" class="row" >
-            <form  name="signup" method="post" action="<?= $id === false ? 'http://localhost/locadora-online/cadastar-cliente.php' : 'http://localhost/locadora-online/editar.php?id=' . $id; ?>"
+            <form  name="signup" method="post" action="<?= $id === false ? 'http://localhost/locadora-online/src/filme/cadastrar-filme.php' : 'http://localhost/locadora-online/src/filme/editarFilme.php?id=' . $id; ?>"
                 <div class="mb-3">
-                    <label for="nome" class="form-label">Nome</label>
+                    <label for="nome" class="form-label">Nome do Filme:</label>
                     <input 
                         type="text" 
                         class="form-control" 
                         aria-describedby="nomeHelp" 
-                        name="nome" 
-                        value="<?= $cliente['nome']; ?>"
+                        name="nome_filme" 
+                        value="<?= $filme['nome_filme']; ?>"
                         required 
-                        placeholder="Nome do cliente" 
-                        id="nome"                        
+                        placeholder="Nome do filme" 
+                        id="nome_filme"                        
                     />
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">E-mail:</label>
+                    <label for="email" class="form-label">Tipo do filme:</label>
                     <input 
-                        type="email" 
+                        type="text" 
                         class="form-control"
                         aria-describedby="emailHelp" 
-                        name="email" 
-                        value="<?= $cliente['email']; ?>"
+                        name="tipo_filme" 
+                        value="<?= $filme['tipo_filme']; ?>"
                         required 
-                        placeholder="E-mail do cliente" 
-                        id="email"                        
+                        placeholder="Tipo do Filme" 
+                        id="tipo_filme"                        
                     />
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Data de nascimento:</label>
+                    <label for="email" class="form-label">Data de lançamento:</label>
                     <input 
                         type="date" 
                         class="form-control" 
                         aria-describedby="dataHelp" 
-                        name="data" 
-                        value="<?= $cliente['data_nascimento']; ?>"
+                        name="data_filme" 
+                        value="<?= $filme['data_filme']; ?>"
                         required 
-                        placeholder="data de nascimento" 
-                        id="data"  
+                        placeholder="Data de lançamento" 
+                        id="data_filme"  
                     />
                 </div>
 
-                <input class="btn btn-primary" type="submit" value="Cadastrar" >
+                <input class="btn btn-primary" type="submit" value="Editar" >
                 <a href="index.php"><button type="button" class="btn btn-secondary" >Voltar</button></a>
             </form>
         </div>

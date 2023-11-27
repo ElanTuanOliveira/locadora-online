@@ -2,7 +2,8 @@
 <?php
 
 require ('conexao.php');
-
+require_once ('lista.php');
+require_once ('consultaLocacao.php');
 
 ?><!doctype html>
 <head>
@@ -17,12 +18,15 @@ require ('conexao.php');
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link href="path/to/select2.min.css" rel="stylesheet" />
     <!-- JS -->
+    <script type="text/javascript" src="jquery.js"></script>
+    <script src="path/to/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
-        <h2>Cadastrar o cliente</h2>
+        <h2>Alugar Filme</h2>
         <br> 
         <br>  
         <?php require ('components/menu.php');?>
@@ -30,29 +34,26 @@ require ('conexao.php');
         <br>
         <br>
         <div id="cadastro" class="row" >
-            <form  name="signup" method="post" action="cadastro.php">
+            <form  name="signup" method="post" action="cadastroLocacao.php">
                 <div class="mb-3">
-                    <label for="nome" class="form-label">Cliente</label>
-                    <input 
-                        type="text" 
-                        class="form-control" 
-                        aria-describedby="nomeHelp" 
-                        name="cliente" 
-                        required 
-                        placeholder="Nome do cliente" 
-                        id="cliente"                        
-                    />
+                <label for="nome" class="form-label">Cliente</label>
+                    <br> 
+                    <select class="cliente" name="cliente">
+                        <option value="">Selecione o cliente</option>
+                        <?php foreach ($clienteLista as $cliente): ?>
+                        <option value="<?=$cliente['id']?>"><?= $cliente['nome']; ?></option>      
+                        <?php endforeach; ?> 
+                    </select>
                     <div class="mb-3">
+                    <br>    
                     <label for="nome" class="form-label">Filme</label>
-                    <input 
-                        type="text" 
-                        class="form-control" 
-                        aria-describedby="nomeHelp" 
-                        name="filme" 
-                        required 
-                        placeholder="Nome do filme" 
-                        id="filme"                        
-                    />    
+                    <br>
+                    <select class="filme" name="filme">
+                        <option value="">Selecione o filme</option>
+                        <?php foreach ($filmesDisponiveis as $filmes):?>
+                        <option value="<?=$filmes['id']?>"><?= $filmes['nome_filme'];?></option>      
+                        <?php endforeach; ?> 
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Data de locação:</label>
@@ -63,7 +64,7 @@ require ('conexao.php');
                         name="datalocacao" 
                         required 
                         placeholder="data de locação" 
-                        id="datalocacao"  
+                        id="data"  
                     />
                 </div>
                 <div class="mb-3">
@@ -88,4 +89,21 @@ require ('conexao.php');
 	
 </body>
 </html>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('.cliente').select2();
+});   
+
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('.filme').select2();
+});   
+
+</script>
+
 

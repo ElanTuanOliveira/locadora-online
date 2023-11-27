@@ -1,6 +1,6 @@
 <?php
 
-require('conexao.php');
+require('Filme.php');
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 if($id === false){
@@ -25,13 +25,18 @@ if ($data === false) {
     exit();
 } 
 
-$sql = "UPDATE filme SET nome_filme = '$nome', tipo_filme = '$tipo', data_filme = '$data' WHERE id = $id;";
-$stmt = $mysqli->prepare($sql);
-$stmt = $mysqli->execute_query($sql);
 
 
-if($stmt){
-    header('Location: http://localhost/locadora-online/listar-filme.php?sucesso=1');
-}else{
-    header('Location: http://localhost/locadora-online/formulario-filme.php?sucesso=0');
+if (!empty($_POST)){
+
+    $alteraFilmeClasse = new Filme;
+    $resultado_update = $alteraFilmeClasse->alterarFilme($_POST, $id);
+    
+    if($stmt){
+        header('Location: http://localhost/locadora-online/src/filme/listar-filme.php?sucesso=1');
+    }else{
+        header('Location: http://localhost/locadora-online/src/filme/formulario-filme.php?sucesso=0');
+    }
 }
+
+
